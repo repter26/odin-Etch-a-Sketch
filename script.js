@@ -1,6 +1,5 @@
 let size = 16;
 
-run();
 
 function run() {
     const container = document.querySelector("#container");
@@ -22,13 +21,19 @@ subContainers.forEach( subContainer => {
 });
 
 const divs = document.querySelectorAll(".divs");
-
 divs.forEach(div => {
     div.addEventListener('mouseenter', () => {
-        div.classList.add("blue");
+        div.style.backgroundColor = getRandomColor();
     }
     )
 });
+}
+
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 const btn = document.querySelector(".size");
@@ -36,17 +41,16 @@ btn.addEventListener("click", () => {
     do{
         size = prompt("choose grid-size between 16px and 100px");
     }while(size > 100 || size < 16);
-    
 
-    
     run();
     const divs = document.querySelectorAll(".divs");
     divs.forEach(div => {
-        div.classList.remove("blue");
-
+        div.style.backgroundColor = "white";
     });
     
 });
+
+run();
 
 
 
